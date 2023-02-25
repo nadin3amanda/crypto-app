@@ -1,9 +1,10 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import showStore from '../stores/showStore'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import Header from '../components/Header';
 
-const data = [
+const data: any = [
   {
     name: 'Page A',
     uv: 4000,
@@ -54,13 +55,22 @@ export default function Show() {
 
   React.useEffect(() => {
     store.fetchData(params.id)
-  }, [])
+  }, [params.id, store]); //previously empty
+
+  if (!store.data) return <></>;
+
   return (
+    <>
+    <Header back/>
+    <header>
+      <img src={store.data.image.large} alt='icon' />
+      <h2>{store.data.name} ({store.data.symbol})</h2>
+    </header>
     <div>
       <LineChart
           width={500}
           height={300}
-          data={data}
+          data={store.graphData}
           margin={{
             top: 5,
             right: 30,
@@ -69,13 +79,38 @@ export default function Show() {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="Date" />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="Price" stroke="#8884d8" activeDot={{ r: 8 }} />
           <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
         </LineChart>
     </div>
+    <div>
+      <h4>Market cap rank</h4>
+      <span>{store.data.market_cap_rank}</span>
+    </div>
+    <div>
+      <h4>24 high</h4>
+      <span>${store.data.market_data.high_24.php}</span>
+    </div>
+    <div>
+      <h4>24 low</h4>
+      <span>${store.data.market_data.low_24.php}</span>
+    </div>
+    <div>
+      <h4>Circulating Supply</h4>
+      <span>${store.data.market_data.circulating_supply}</span>
+    </div>
+    <div>
+      <h4>Current Price</h4>
+      <span>${store.data.market_data.current_price.php} </span>
+    </div>
+    <div>
+      <h4>1year Change</h4>
+      <span>${store.data.market_data.price_change_percentage_1y.toFixed(2)}% </span>
+    </div>
+    </>
   )
 }

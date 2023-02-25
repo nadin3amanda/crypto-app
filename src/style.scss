@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Quicksand:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+.width {
+    margin: 0 auto;
+    width: 92%;
+    max-width: 650px  ;
+}
+
+.header {
+    color: #fff;
+    background-color: rgba(20, 40, 90, 1);
+    position: sticky;
+
+    .width {
+        position: relative;
+    }
+
+    svg {
+        position:absolute;
+        top: 35%;
+        left: 0;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 35px;
+        font-family: 'Bungee Inline', cursive;
+        letter-spacing: 1.7px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+}
+
+input[type="text"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    border: none;
+    outline: none;
+    display: block;
+    width: 100%;
+    border: 0;
+}
+.home-search {
+    padding: 40px 0px;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    font-size: 22px;
+    font-family: 'Quicksand', sans-serif;
+    color: rgba(49, 175, 183, 1);
+}
