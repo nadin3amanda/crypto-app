@@ -10,7 +10,7 @@ const homeStore: any = create((set: any) => ({
     setQuery: (event: any) => {
         set({query: event.target.value})
         homeStore.getState().searchCoins() 
-    }, 
+    },
 
     searchCoins: debounce( async () => {
     const query: any = homeStore.getState()
@@ -37,15 +37,16 @@ const homeStore: any = create((set: any) => ({
     const [res, btcRes] = await Promise.all([
       axios.get('https://api.coingecko.com/api/v3/search/trending'),
       axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=php`),
+
     ]);
     const btcPrice = btcRes.data.bitcoin.php;
-    const coins = res.data.coins.map((coin: { item: { name: any; large: any; id: any; price_btc: any; }; }) => {
+    const coins = res.data.coins.map((coin: { item: { name: string; large: string; id: any; price_btc: number; pricePhp: number }; }) => {
         return {
             name: coin.item.name,
             image: coin.item.large,
             id: coin.item.id,
             priceBtc: coin.item.price_btc.toFixed(10),
-            pricePhp:(coin.item.price_btc * btcPrice).toFixed(6)
+            pricePhp:(coin.item.price_btc*btcPrice).toFixed(6)
         }
     })
     set({coins, trending: coins});

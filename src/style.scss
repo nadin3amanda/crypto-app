@@ -57,6 +57,13 @@ input[type="text"] {
     width: 100%;
     border: 0;
 }
+
+input {
+    border: 1px solid #ddd;
+    padding: 0px 24px;
+    border-radius: 6px;
+    line-height: 50px;
+}
 .home-search {
     padding: 40px 0px;
     text-align: center;
@@ -64,7 +71,56 @@ input[type="text"] {
 
 h2 {
     text-align: center;
-    font-size: 22px;
+    font-size: 24px;
+    letter-spacing: 1.5;
     font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
     color: rgba(49, 175, 183, 1);
+    margin: 20px 0px 22px 0px;
+}
+
+.home-crypto {
+    font-size: 20px;
+    font-family: 'Quicksand', sans-serif;
+    color: #fff;
+    margin-bottom: 12px;
+
+    span {
+        display: block;
+    }
+}
+
+.home-crypto-coin {
+ a {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+    gap: 20px 0;
+ }
+
+}
+
+.home-crypto-image {
+    width: 45px;
+    height: 45px;
+}
+.home-crypto-name {
+    flex: 1;
+    font-size: 20px;
+    color: #222;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
+
+.home-crypto-price-btc {
+    font-size: 18px;
+    color: #fff;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
+
+.home-crypto-price-php {
+    font-size: 14px;
+    color: #8b8b8b;
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import CoinList from '../components/CoinList';
 import Header from '../components/Header';
 import homeStore from '../stores/homeStore'
 
@@ -18,16 +18,17 @@ export default function Home() {
       <div className="width">
       <input type="text" value={store.query} onChange={store.setQuery} />
       </div>
+      <h2>Trending today</h2>
       </header>
-    {store.coins.map((coin: any) => {
+      <div className="home-crypto">
+        <div className="width">
+        {store.coins.map((coin: any) => {
       return (
-        <div key={coin.id} >
-        <Link to ={`/${coin.id}`}>
-        {coin.name}
-        </Link>
-        </div>
+        <CoinList key={coin.id} coin={coin} />
       )
     })}
+        </div>
+      </div>
     </div>
   )
 }

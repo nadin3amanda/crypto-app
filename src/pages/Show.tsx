@@ -50,6 +50,7 @@ const data: any = [
 ];
 
 export default function Show() {
+
   const store: any = showStore()
   const params: any = useParams()
 
