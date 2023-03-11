@@ -2,6 +2,7 @@ import React from "react";
 import CoinList from "../components/CoinList";
 import Header from "../components/Header";
 import homeStore from "../stores/homeStore";
+import Footer from "./Footer";
 
 export default function Home() {
   const store: any = homeStore();
@@ -29,6 +30,7 @@ export default function Home() {
           })}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
