@@ -9,6 +9,7 @@ export default function Home() {
 
   React.useEffect(() => {
     store.fetchCoins();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
