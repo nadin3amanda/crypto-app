@@ -1,12 +1,13 @@
 import React from 'react'
 import axios from 'axios';
-import create from 'zustand';
+import {create} from 'zustand';
 
 const showStore = create((set: any) => ({
     graphData: [],
+    data: null,
 
     fetchData: async (id: any) => {
-        const [graphRes] = await Promise.all([
+        const [graphRes, dataRes] = await Promise.all([
             axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=PHP&days=120`),
             axios.get(`https://api.coingecko.com/api/v3/coins/${id}?localization=false&market_data=true`)
         ])
@@ -19,8 +20,7 @@ const showStore = create((set: any) => ({
                 Price: p,
             };
        });
-
-       set({graphData});
+       set({graphData, data: dataRes.data });
     },
 }));
 

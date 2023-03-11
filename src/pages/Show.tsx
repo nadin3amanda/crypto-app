@@ -56,7 +56,7 @@ export default function Show() {
 
   React.useEffect(() => {
     store.fetchData(params.id)
-  }, [params.id, store]); //previously empty
+  }, [params.id]); //previously empty
 
   if (!store.data) return <></>;
 
@@ -94,11 +94,11 @@ export default function Show() {
     </div>
     <div>
       <h4>24 high</h4>
-      <span>${store.data.market_data.high_24.php}</span>
+      <span>${store.data.market_data.high_24h.php}</span>
     </div>
     <div>
       <h4>24 low</h4>
-      <span>${store.data.market_data.low_24.php}</span>
+      <span>${store.data.market_data.low_24h.php}</span>
     </div>
     <div>
       <h4>Circulating Supply</h4>
