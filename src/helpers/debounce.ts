@@ -7,6 +7,7 @@ export default function debounce<F extends Function>(func:F, wait:number):F {
 	}
   
 	// conversion through any necessary as it wont satisfy criteria otherwise
+	// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 	return <any>function(this:any, ...args: any[]) {
 		clearTimeout(timeoutID);
 		const context = this;
