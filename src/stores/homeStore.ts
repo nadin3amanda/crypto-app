@@ -79,8 +79,8 @@ const homeStore = create<HomeStore>((set: SetState<HomeStoreState>, get) => ({
           name: coin.item.name,
           image: coin.item.large,
           id: coin.item.id,
-          priceBtc: coin.item.price_btc.toFixed(10),
-          pricePhp: (coin.item.price_btc * btcPrice).toFixed(6),
+          priceBtc: (coin.item.price_btc).toFixed(10),
+          pricePhp: (coin.item.pricePhp * btcPrice).toFixed(6),
         };
       }
     );
