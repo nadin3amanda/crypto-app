@@ -23,6 +23,9 @@ const Show = () => {
     <CryptoIconContainer>
       <CryptoIcon src={store.data.image.large} alt='icon' />
       <h2>{store.data.name} ({store.data.symbol})</h2>
+      <MobileNotification>
+          View this graph better on desktop
+        </MobileNotification>
     </CryptoIconContainer>
       <LineChartContainer>
       <LineChart
@@ -41,8 +44,8 @@ const Show = () => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="Price" stroke="#8884d8" activeDot={{ r: 8 }} />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+              <Line type="monotone" dataKey="Price" stroke="#8884d8" activeDot={{ r: 8 }} />
+              <Line type="monotone" dataKey="uv" stroke="#82ca9d"  />
         </LineChart>
       </LineChartContainer>
     <Details>
@@ -60,7 +63,7 @@ const Show = () => {
       </DetailsBox>
       <DetailsBox>
       <h4>Circulating Supply</h4>
-      <span>$ {store.data.market_data.circulating_supply}</span>
+      <span>$ {store.data.market_data.circulating_supply.toLocaleString()} </span>
       </DetailsBox>
       <DetailsBox>
       <h4>Current Price</h4>
@@ -83,21 +86,27 @@ const ShowContainer = styled.div`
     overflow-x: hidden;
    }
 `;
+
 const LineChartContainer = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
+  font-family: 'Quicksand', sans-serif;
 
   @media only screen and (max-device-width: 480px) {
-  margin-top: 50px;
-  align-items: center;
+    height: 70px;
+    margin: 70px 0px 100px 0px;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: rgba(49, 175, 183, 1);
 }
 `;
 const CryptoIconContainer = styled.div`
   align-items: center;
   padding: 20px auto;
-  margin: 40px 0px 20px 0px;
+  margin: 40px 0px 50px 0px;
   display: inline-block;
   text-align: center;
   width: 100%;
@@ -107,12 +116,33 @@ const CryptoIcon = styled.img`
   height: 100px;
 `;
 
+const MobileNotification = styled.div`
+    display: none;
+
+  @media only screen and (max-device-width: 480px) {
+      margin: -10px 0px 10px 0px;
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      font-family: 'Quicksand', sans-serif;
+      font-style: italic;
+      color: #dddd;
+  }
+`;
+
 const Details = styled.div`
   display: flex;
   width: 100%;
+  padding-top: 50px;
   align-items: center;
-  justify-content: center;
   text-align: center;
+  animation: fadeIn 3s;
+
+  @keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
 
   @media only screen and (max-device-width: 480px) {
     flex-direction: column;
@@ -125,6 +155,7 @@ const DetailsBox = styled.div`
     border-radius: 12px;
     padding: 20px;
     margin: 30px;
+    background-color: #353535;
     font-family: 'Quicksand', sans-serif;
     font-size: 18px;
     letter-spacing: 1.3px;
