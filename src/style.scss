@@ -217,10 +217,12 @@ h2 {
     color: #fff;
     font-family: 'Quicksand', sans-serif;
     font-weight: 700;
+    text-overflow: ellipsis;
 }
 
 .home-crypto-price-php {
     font-size: 14px;
     color: #8b8b8b;
     align-content: flex-end;
+    text-overflow: ellipsis;
 }
