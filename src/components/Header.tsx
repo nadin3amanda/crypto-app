@@ -14,7 +14,7 @@ export default function Header(props: any) {
       </Link>
       )}
       <h1>
-        <Link to=''>Crypto App</Link>
+        <Link to='/'>Crypto App</Link>
       </h1>
     </div>
     </header>
