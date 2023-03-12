@@ -1,27 +1,48 @@
 import axios from "axios";
-import { create } from "zustand";
+import { create, SetState } from "zustand";
 import debounce from "../helpers/debounce";
 
-const homeStore: any = create((set: any) => ({
+interface Coin {
+  name: string;
+  image: string;
+  id: string;
+  priceBtc?: string;
+  pricePhp?: string;
+}
+
+interface HomeStoreState {
+  coins: Coin[];
+  trending: Coin[];
+  query: string;
+}
+
+interface HomeStore extends HomeStoreState {
+  setQuery: (query: string) => void;
+  searchCoins: () => Promise<void>;
+  fetchCoins: () => Promise<void>;
+}
+
+const homeStore = create<HomeStore>((set: SetState<HomeStoreState>, get) => ({
   coins: [],
   trending: [],
   query: "",
 
-  setQuery: (event: any) => {
-    set({ query: event.target.value });
-    homeStore.getState().searchCoins();
+  // Set query and search for coins
+  setQuery: (query: string) => {
+    set({ query });
+    get().searchCoins();
   },
 
+  // Search for coins based on the query
   searchCoins: debounce(async () => {
-    const query: any = homeStore.getState();
-    const trending: any = homeStore.getState();
+    const query = get().query;
 
     if (query.length > 2) {
       const res = await axios.get(
         `https://api.coingecko.com/api/v3/search?query=${query}`
       );
 
-      const coins: any = res.data.coins.map((coin: any) => {
+      const coins: Coin[] = res.data.coins.map((coin: any) => {
         return {
           name: coin.name,
           image: coin.large,
@@ -31,19 +52,20 @@ const homeStore: any = create((set: any) => ({
 
       set({ coins });
     } else {
-      set({ coins: trending });
+      set({ coins: get().trending });
     }
   }, 500),
 
+  // Fetch trending coins and BTC price
   fetchCoins: async () => {
-    const [res, btcRes] = await Promise.all([
+    const [trendingRes, btcRes] = await Promise.all([
       axios.get("https://api.coingecko.com/api/v3/search/trending"),
       axios.get(
         `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=php`
       ),
     ]);
     const btcPrice = btcRes.data.bitcoin.php;
-    const coins = res.data.coins.map(
+    const coins: Coin[] = trendingRes.data.coins.map(
       (coin: {
         item: {
           name: string;

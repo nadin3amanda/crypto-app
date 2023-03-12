@@ -6,6 +6,9 @@ import Footer from "./Footer";
 
 export default function Home() {
   const store: any = homeStore();
+  function handleQueryChange(e: React.ChangeEvent<HTMLInputElement>) {
+    store.setQuery(e.target.value);
+  }
 
   React.useEffect(() => {
     store.fetchCoins();
@@ -18,7 +21,9 @@ export default function Home() {
       <header className="home-search">
         <h2>Search for a coin</h2>
         <div className="width">
-          <input type="text" value={store.query} onChange={store.setQuery} />
+          <input type="text" value={store.query}
+          onChange={handleQueryChange}
+          />
         </div>
       </header>
         <div className="trending-h2">
