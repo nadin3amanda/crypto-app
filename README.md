@@ -5,7 +5,7 @@
   <br>
   <i>I'm Nadine. I'm a Creative Noob Front End Developer.<br>
       A video game enthusiast! Mom of 2 kids👩‍👧‍👧 and 2 cats!😸😽 <br><br>
- <i>Welcome! This is a bug tracker that I made using React TS 😊 </i><br><br>
+ <i>Welcome! This is a crypto app that I made using React TS 😊 </i><br><br>
  <i> What I used for this fun project: </i><br>
  
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)&nbsp;
@@ -16,13 +16,13 @@
 ![VS Code](https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)&nbsp;
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)&nbsp;
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)&nbsp;
+![SCSS](https://img.shields.io/badge/SCSS-ff3399?style=for-the-badge&logo=css3&logoColor=white)&nbsp;
 
 <br>
 🤔 <i> How else could I make this project better in the future </i><br>
 - Adding error handling<br>
 - Adding Character limitation<br>
-- A login capability
-- A chat support box
+- What else?
 <br>
 <br>
 <br>
