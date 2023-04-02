@@ -19,7 +19,7 @@ const Show = () => {
 
   return (
     <ShowContainer>
-    <Header back/>
+    <Header />
     <CryptoIconContainer>
       <CryptoIcon src={store.data.image.large} alt='icon' />
       <h2>{store.data.name} ({store.data.symbol})</h2>
