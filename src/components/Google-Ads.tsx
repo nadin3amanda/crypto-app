@@ -9,7 +9,7 @@ declare global {
 }
 
 type GoogleAdsProps = {
-  adSlot: string;
+  adSlot: string | number;
   adFormat?: string;
   fullWidthResponsive?: boolean;
 };
