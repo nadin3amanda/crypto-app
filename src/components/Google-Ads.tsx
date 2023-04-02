@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import styled from 'styled-components';
 
 declare global {
   interface Window {
@@ -27,15 +28,26 @@ const GoogleAds: React.FC<GoogleAdsProps> = ({
 
 
   return (
-    <ins
-      className="adsbygoogle"
-      style={{ display: 'block' }}
-      data-ad-client="ca-pub-1234567890"
-      data-ad-slot={adSlot}
-      data-ad-format={adFormat}
-      data-full-width-responsive={fullWidthResponsive}
+    <AdsContainer>
+          <ins
+            className="adsbygoogle"
+            style={{ display: 'block' }}
+            data-ad-client="ca-pub-1234567890"
+            data-ad-slot={adSlot}
+            data-ad-format={adFormat}
+            data-full-width-responsive={fullWidthResponsive}
     />
+    </AdsContainer>
   );
 };
 
 export default GoogleAds;
+
+const AdsContainer = styled.div`
+  display: flex;
+  width: 100%;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+
+`;
