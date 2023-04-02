@@ -3,6 +3,7 @@ import CoinList from "../components/CoinList";
 import Header from "../components/Header";
 import homeStore from "../stores/homeStore";
 import Footer from "./Footer";
+import GoogleAds from "../components/Google-Ads";
 
 export default function Home() {
   const store: any = homeStore();
@@ -36,6 +37,7 @@ export default function Home() {
           })}
         </div>
       </div>
+      <GoogleAds adSlot={9745466189} />
       <Footer />
     </div>
   );
